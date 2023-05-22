@@ -9,7 +9,7 @@ const listCountry= document.querySelector('.country-list');
 const info = document.querySelector('.country-info');
 
 
-inputSearch.addEventListener('input', debounce(handlerInputSearch, 1000));
+inputSearch.addEventListener('input', debounce(handlerInputSearch, DEBOUNCE_DELAY));
 
 // fetchCountries('poland')
 
@@ -66,13 +66,15 @@ function handlerInputSearch(evt) {
 function showCountryInfo(country) {
 
     // arrayCountries.forEach((country) => {});
-        markup = `
-            <img src="${country.flag}" alt="flag of ${country.name}">
-            <h2>${country.name}</h2>
-            <ul>
-                <li><span>Capital:</span>${country.capital}</li>
-                <li><span>Population:</span>${country.population}</li>
-                <li><span>Languages:</span>${country.languages}</li>
+    markup = `
+            <div class="wrap-info">
+                <img class="img-info" src="${country.flag}" alt="flag of ${country.name}" width="100">
+                <h1 class="title-info">${country.name}</h1>
+            </div>
+            <ul class="list list-info">
+                <li class="item-info"><span class="item-wrap-info">Capital:</span>${country.capital}</li>
+                <li class="item-info"><span class="item-wrap-info">Population:</span>${country.population}</li>
+                <li class="item-info"><span class="item-wrap-info">Languages:</span>${country.languages}</li>
             </ul>
         `;
     info.innerHTML = markup;
@@ -88,9 +90,9 @@ function showCountryList(countries) {
     // name, capital, population, flags: { svg }, languages: { name }
     const markup = countries
         .map(country => `
-            <li>
-                <img src="${country.flag}" alt="flag of ${country.name}">
-                <h3>${country.name}</h3>
+            <li class="item-list">
+                <img src="${country.flag}" alt="flag of ${country.name}" width="50" height="40">
+                <h3 class="title-list">${country.name}</h3>
             </li>
         `)
         .join('');

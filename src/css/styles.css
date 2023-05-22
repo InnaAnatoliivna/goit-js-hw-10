@@ -7,14 +7,69 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
   color: #212121;
   line-height: 1.5;
+
+  background: rgb(221,224,238);
+background: radial-gradient(circle, rgba(221,224,238,0.9697128851540616) 81%, rgba(237,237,237,1) 100%);
 }
 
 #search-box {
   font: inherit;
-  padding: 8px;
-  max-width: 320px;
+  padding: 12px 8px;
+  min-width: 400px;
   margin-bottom: 16px;
+  margin-left: 38px;
+
+  border-color: blue;
+  background-color: transparent;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+.list {
+  list-style: none;
+}
+/* ====== one card ( showCountryInfo ) ======= */
+
+.wrap-info {
+  display: flex;
+  align-items: center;
+  margin-left: 38px;
+  gap: 15px;
+
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.list-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.item-wrap-info {
+  font-weight: 700;
+  font-size: 25px;
+
+  margin-right: 8px;
+}
+
+.item-info {
+    font-size: 25px;
+}
+
+/* ====== many cards ( showCountryList ) ======= */
+
+.item-list {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 15px;
+}
+
+.title-list {
+  font-size: 20px;
+  font-weight: 600;
 }
