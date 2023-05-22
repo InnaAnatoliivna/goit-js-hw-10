@@ -31,17 +31,17 @@ function handlerInputSearch(evt) {
     fetchCountries(searchValue)
 
         .then((data) => {
-            return data.map((entry) => ({
-                name: entry.name,
-                capital: entry.capital,
-                population: entry.population,
-                flag: entry.flags.svg,
-                languages: entry.languages.map((language) => language.name)
+            return data.map((country) => ({
+                name: country.name,
+                capital: country.capital,
+                population: country.population,
+                flag: country.flags.svg,
+                languages: country.languages.map((language) => language.name)
             }));
         })
         .then(data => {
             if (data.length === 1) {
-                showCountryInfo(data);
+                showCountryInfo(data[0]);
                 // info.innerHTML = creatMarkupCountry(data);
             } else if (data.length > 1 && data.length <= 10) {
                 showCountryList(data);
@@ -64,10 +64,11 @@ function handlerInputSearch(evt) {
  * @param {*string} country 
  */
 function showCountryInfo(country) {
+
     // arrayCountries.forEach((country) => {});
         markup = `
-            <img src="${entry.flag}" alt="flag of ${country.name}">
-            <h2>${entry.name}</h2>
+            <img src="${country.flag}" alt="flag of ${country.name}">
+            <h2>${country.name}</h2>
             <ul>
                 <li><span>Capital:</span>${country.capital}</li>
                 <li><span>Population:</span>${country.population}</li>
@@ -84,6 +85,7 @@ function showCountryInfo(country) {
  * @param {string} countries 
  */
 function showCountryList(countries) {
+    // name, capital, population, flags: { svg }, languages: { name }
     const markup = countries
         .map(country => `
             <li>
