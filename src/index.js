@@ -8,11 +8,7 @@ const inputSearch = document.querySelector('#search-box');
 const listCountry= document.querySelector('.country-list');
 const info = document.querySelector('.country-info');
 
-
 inputSearch.addEventListener('input', debounce(handlerInputSearch, DEBOUNCE_DELAY));
-
-// fetchCountries('poland')
-
 
 /**==============================================================
  * function for handler event on input
@@ -27,7 +23,7 @@ function handlerInputSearch(evt) {
         clearResults();
         return
     }
-    // console.dir(evt)
+
     fetchCountries(searchValue)
 
         .then((data) => {
@@ -42,12 +38,9 @@ function handlerInputSearch(evt) {
         .then(data => {
             if ( data.length === 1 ) {
                 showCountryInfo(data[0]);
-                // info.innerHTML = creatMarkupCountry(data);
             } else if ( data.length > 1 && data.length <= 10 ) {
                 showCountryList(data);
-                // listCountry.innerHTML = creatMarkupCards(data);
             } else if ( data.length > 10 ) {
-                // showTooManyMatchesMessage();
                 Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')
                 clearResults();
             }
@@ -68,7 +61,6 @@ function handlerInputSearch(evt) {
  * @param {*string} country 
  */
 function showCountryInfo(country) {
-
     // arrayCountries.forEach((country) => {});
     markup = `
             <div class="wrap-info">
@@ -83,7 +75,6 @@ function showCountryInfo(country) {
         `;
     info.innerHTML = markup;
     listCountry.innerHTML = '';
-    // return markup;
 }
 
 /**==============================================================
