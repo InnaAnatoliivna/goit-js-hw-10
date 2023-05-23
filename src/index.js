@@ -62,7 +62,7 @@ function handlerInputSearch(evt) {
  */
 function showCountryInfo(country) {
     // arrayCountries.forEach((country) => {});
-    markup = `
+    const markup = `
             <div class="wrap-info">
                 <img class="img-info" src="${country.flag}" alt="flag of ${country.name}" width="100">
                 <h1 class="title-info">${country.name}</h1>
