@@ -44,15 +44,15 @@ function handlerInputSearch(evt) {
                 Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')
                 clearResults();
             }
-            // else if ( data.length === 0 ){
-            //     Notiflix.Notify.failure('Oops, there is no country with that name');
-            //     clearResults();
-            // }
+            else if ( data.length === 0 ){
+                Notiflix.Notify.failure('Oops, there is no country with that name');
+                clearResults();
+            }
         })
         .catch(error => {
             console.error(error);
-            Notiflix.Notify.failure('Oops, there is no country with that name');
-            clearResults();
+            // Notiflix.Notify.failure('Oops, there is no country with that name');
+            // clearResults();
         })
 }
 

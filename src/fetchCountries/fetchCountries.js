@@ -17,11 +17,12 @@ function fetchCountries(name = "") {
     // })
     // const params = new URLSearchParams({ name, capital, population, flags: { svg }, languages: { name }})
 
-    // return fetch(`https://restcountries.com/v2/name/${name}?fields=${fields}`)
     return fetch(`https://restcountries.com/v2/name/${name}`)
-    // return fetch(`https://restcountries.com/v2/name/${name}?fields=${params}`)
 
-        
+    // return fetch(`https://restcountries.com/v2/name/${name}?fields=${fields}`)
+    // return fetch(`https://restcountries.com/v2/name/${name}?fields=${params}`)
+    // return fetch(`https://restcountries.com/v2/name/${name}?fields={name};{capital};{population};{flags.svg};{languages.name};`)
+
     .then(response => {
         console.log(response);
         if (!response.ok) {
@@ -29,7 +30,7 @@ function fetchCountries(name = "") {
         }
         return response.json()
     })
-    // .then(data=>data)
+    // .then(data=>console.log(data))
     // .catch(err=>console.error(err))
 }
 
