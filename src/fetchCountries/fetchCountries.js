@@ -26,7 +26,7 @@ function fetchCountries(name = "") {
     .then(response => {
         console.log(response);
         if (!response.ok) {
-            throw new Error(resp.statusText)
+            throw new Error(response.statusText)
         }
         return response.json()
     })

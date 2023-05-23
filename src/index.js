@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 
 const DEBOUNCE_DELAY = 300;
 const inputSearch = document.querySelector('#search-box');
-const listCountry= document.querySelector('.country-list');
+const listCountry = document.querySelector('.country-list');
 const info = document.querySelector('.country-info');
 
 inputSearch.addEventListener('input', debounce(handlerInputSearch, DEBOUNCE_DELAY));
@@ -36,15 +36,15 @@ function handlerInputSearch(evt) {
             }));
         })
         .then(data => {
-            if ( data.length === 1 ) {
+            if (data.length === 1) {
                 showCountryInfo(data[0]);
-            } else if ( data.length > 1 && data.length <= 10 ) {
+            } else if (data.length > 1 && data.length <= 10) {
                 showCountryList(data);
-            } else if ( data.length > 10 ) {
+            } else if (data.length > 10) {
                 Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')
                 clearResults();
             }
-            else if ( data.length === 0 ){
+            else if (data.length === 0) {
                 Notiflix.Notify.failure('Oops, there is no country with that name');
                 clearResults();
             }
@@ -82,7 +82,6 @@ function showCountryInfo(country) {
  * @param {string} countries 
  */
 function showCountryList(countries) {
-    // name, capital, population, flags: { svg }, languages: { name }
     const markup = countries
         .map(country => `
             <li class="item-list">
@@ -91,7 +90,7 @@ function showCountryList(countries) {
             </li>
         `)
         .join('');
-    
+
     info.innerHTML = '';
     listCountry.innerHTML = markup;
 }
