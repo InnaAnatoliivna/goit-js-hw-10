@@ -40,23 +40,27 @@ function handlerInputSearch(evt) {
             }));
         })
         .then(data => {
-            if (data.length === 1) {
+            if ( data.length === 1 ) {
                 showCountryInfo(data[0]);
                 // info.innerHTML = creatMarkupCountry(data);
-            } else if (data.length > 1 && data.length <= 10) {
+            } else if ( data.length > 1 && data.length <= 10 ) {
                 showCountryList(data);
                 // listCountry.innerHTML = creatMarkupCards(data);
-            } else if (data.length > 10) {
+            } else if ( data.length > 10 ) {
                 // showTooManyMatchesMessage();
-                Notiflix.Notify.failure('Too many matches found. Please enter a more specific name.')
+                Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')
                 clearResults();
             }
-            else {
-                Notiflix.Notify.info('No matches found');
-                clearResults();
-            }
+            // else if ( data.length === 0 ){
+            //     Notiflix.Notify.failure('Oops, there is no country with that name');
+            //     clearResults();
+            // }
         })
-        // .catch(error => console.error(error));
+        .catch(error => {
+            console.error(error);
+            Notiflix.Notify.failure('Oops, there is no country with that name');
+            clearResults();
+        })
 }
 
 /**==============================================================
